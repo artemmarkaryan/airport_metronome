@@ -54,14 +54,14 @@ func (c *C) setSpeed(w http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	speed, err := strconv.ParseInt(q[0], 10, 64)
+	speed, err := strconv.ParseFloat(q[0], 64)
 	if err != nil {
 		writeError(w, http.StatusBadRequest, fmt.Sprintf("error parsing speed: %s", err.Error()))
 		return
 	}
 
 	c.Lock()
-	c.secondDuration = 1.0 / float64(speed)
+	c.secondDuration = 1.0 / speed
 	c.Unlock()
 
 	w.WriteHeader(http.StatusOK)
