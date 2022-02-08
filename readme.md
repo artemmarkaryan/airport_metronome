@@ -11,3 +11,10 @@
 
 `?speed=0.5` will make the clock tick two times slower (comparing to current speed).
 
+## Launch
+
+```
+go run main.go
+```
+
+runs locally at `:8090`
