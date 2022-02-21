@@ -2,19 +2,39 @@
 
 ---
 
-`GET /time` — get seconds from start
+`GET /time` — секунды со старта приложения
 
 ---
 `GET /setSpeed?speed=<float>` - set speed. 
 
-`?speed=2` will make the clock tick two times faster (comparing to current speed).
+`?speed=2` ускорит часы в два раза (по сравнению с текущей скоростью).
 
-`?speed=0.5` will make the clock tick two times slower (comparing to current speed).
+`?speed=0.5` замедлит часы в два раза (по сравнению с текущей скоростью).
 
-## Launch
+## Запуск
 
 ```
-go run main.go
+make run
 ```
 
 runs locally at `:8090`
+
+## Перед первым деплоем
+
+```
+make create-procfile
+```
+
+
+
+
+## Деплой
+
+```
+make build
+```
+
+После этого можно любым удобным способом закинуть в хероку, например связав 
+ветку в гитхабе с app'ой в хероу. 
+
+

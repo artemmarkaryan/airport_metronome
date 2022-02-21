@@ -3,3 +3,6 @@ build:
 
 run:
 	PORT=8090 go run main.go
+
+create-procfile:
+	echo "web: bin/app" >> Procfile
