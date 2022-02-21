@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
 	"sync"
 	"time"
@@ -76,7 +77,16 @@ func main() {
 	http.HandleFunc("/time", c.getTime)
 	http.HandleFunc("/setSpeed", c.setSpeed)
 
-	http.ListenAndServe(":8090", nil)
+	var port string
+	port = os.Getenv("PORT")
+	if port == "" {
+		log.Fatal("$PORT must be set")
+	}
+
+	log.Println("Running...")
+	if err := http.ListenAndServe(":"+port, nil); err != nil {
+		log.Fatal("cant listen and serve")
+	}
 }
 
 func writeError(w http.ResponseWriter, status int, description string) {
